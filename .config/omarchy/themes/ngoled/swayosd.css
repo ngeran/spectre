@@ -1,0 +1,320 @@
+/* ============================================================================
+ * SwayOSD CSS - ngoled Theme
+ * ============================================================================
+ * OLED-optimized on-screen display for volume/brightness
+ * Strategy: Pure black, cyan accents, minimal luminance
+ * ============================================================================
+ */
+
+/* ----------------------------------------------------------------------------
+ * COLOR DEFINITIONS
+ * ----------------------------------------------------------------------------
+ */
+@define-color background-color #000000;   /* Pure OLED black */
+@define-color border-color #3e4451;       /* Slate gray (was #EFEFEF) */
+@define-color label #c8c8c8;              /* Neutral gray (was #EFEFEF) */
+@define-color image #c8c8c8;              /* Icon color (was #EFEFEF) */
+@define-color progress #4a9d9d;           /* Balanced cyan (was #EFEFEF) */
+
+/* Additional semantic colors */
+@define-color progress-bg #1a1b26;        /* Progress bar background */
+@define-color accent #4a9d9d;             /* Accent color */
+@define-color accent-bright #60d0d0;      /* Bright accent */
+@define-color warning #c8a660;            /* Warning color (high volume) */
+@define-color muted #b85a5a;              /* Muted state color */
+@define-color text-dim #8a8a8d;           /* Dimmed text */
+
+/* ----------------------------------------------------------------------------
+ * WINDOW
+ * ----------------------------------------------------------------------------
+ */
+window {
+    background-color: @background-color;
+    border: 2px solid @border-color;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);
+}
+
+/* ----------------------------------------------------------------------------
+ * CONTAINER
+ * ----------------------------------------------------------------------------
+ */
+box {
+    background-color: transparent;
+    spacing: 12px;
+}
+
+/* ----------------------------------------------------------------------------
+ * LABELS (Volume %, Brightness %)
+ * ----------------------------------------------------------------------------
+ */
+label {
+    color: @label;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Percentage label */
+label.percentage {
+    color: @accent-bright;
+    font-size: 20px;
+}
+
+/* Status label (e.g., "Muted") */
+label.status {
+    color: @text-dim;
+    font-size: 14px;
+    font-style: italic;
+}
+
+/* Muted state */
+label.muted {
+    color: @muted;
+}
+
+/* ----------------------------------------------------------------------------
+ * ICONS (Volume, Brightness, Microphone)
+ * ----------------------------------------------------------------------------
+ */
+image {
+    color: @image;
+    -gtk-icon-size: 48px;
+    opacity: 0.9;
+}
+
+/* Volume icons */
+image.volume-high {
+    color: @accent;
+}
+
+image.volume-medium {
+    color: @accent;
+}
+
+image.volume-low {
+    color: @text-dim;
+}
+
+image.volume-muted {
+    color: @muted;
+}
+
+/* Brightness icon */
+image.brightness {
+    color: @warning;
+}
+
+/* Microphone icons */
+image.microphone-on {
+    color: @accent-bright;
+}
+
+image.microphone-muted {
+    color: @muted;
+}
+
+/* ----------------------------------------------------------------------------
+ * PROGRESS BAR
+ * ----------------------------------------------------------------------------
+ */
+progressbar {
+    background-color: @progress-bg;
+    border-radius: 6px;
+    min-height: 12px;
+    min-width: 200px;
+}
+
+/* Progress bar fill */
+progressbar progress {
+    background-color: @progress;
+    border-radius: 6px;
+    min-height: 12px;
+}
+
+/* Different states */
+progressbar.volume progress {
+    background-color: @accent;
+}
+
+progressbar.volume-high progress {
+    background-color: @warning;
+}
+
+progressbar.volume-muted progress {
+    background-color: @muted;
+}
+
+progressbar.brightness progress {
+    background-color: @warning;
+}
+
+progressbar.microphone progress {
+    background-color: @accent-bright;
+}
+
+progressbar.microphone-muted progress {
+    background-color: @muted;
+}
+
+/* ----------------------------------------------------------------------------
+ * TROUGH (Progress Bar Background)
+ * ----------------------------------------------------------------------------
+ */
+trough {
+    background-color: @progress-bg;
+    border-radius: 6px;
+    min-height: 12px;
+}
+
+/* ----------------------------------------------------------------------------
+ * SLIDER (if used for input)
+ * ----------------------------------------------------------------------------
+ */
+scale {
+    background-color: transparent;
+}
+
+scale trough {
+    background-color: @progress-bg;
+    border-radius: 6px;
+    min-height: 8px;
+}
+
+scale highlight {
+    background-color: @progress;
+    border-radius: 6px;
+}
+
+scale slider {
+    background-color: @accent-bright;
+    border: 2px solid @border-color;
+    border-radius: 50%;
+    min-width: 16px;
+    min-height: 16px;
+}
+
+scale slider:hover {
+    background-color: @accent-bright;
+    border-color: @accent-bright;
+}
+
+/* ----------------------------------------------------------------------------
+ * ANIMATIONS
+ * ----------------------------------------------------------------------------
+ */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+}
+
+window {
+    animation: fade-in 0.15s ease-out;
+}
+
+/* ----------------------------------------------------------------------------
+ * CAPSLOCK INDICATOR (if shown)
+ * ----------------------------------------------------------------------------
+ */
+.capslock {
+    color: @warning;
+    font-weight: bold;
+}
+
+.capslock image {
+    color: @warning;
+}
+
+/* ----------------------------------------------------------------------------
+ * SPECIAL STATES
+ * ----------------------------------------------------------------------------
+ */
+/* High volume warning (>100% or dangerous levels) */
+.warning {
+    border-color: @warning;
+}
+
+.warning label {
+    color: @warning;
+}
+
+/* Critical state */
+.critical {
+    border-color: @muted;
+    animation: blink 0.5s ease infinite;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+/* ============================================================================
+ * USAGE EXAMPLES
+ * ============================================================================
+ * Volume Up/Down:
+ *   - Icon: Cyan speaker icon
+ *   - Progress: Cyan bar
+ *   - Label: Bright cyan percentage
+ *
+ * Volume Muted:
+ *   - Icon: Coral muted icon
+ *   - Progress: Coral bar (at muted level)
+ *   - Label: "Muted" in coral
+ *
+ * Brightness:
+ *   - Icon: Amber sun icon
+ *   - Progress: Amber bar
+ *   - Label: Percentage in bright cyan
+ *
+ * Microphone:
+ *   - On: Bright cyan mic icon + cyan bar
+ *   - Muted: Coral mic icon + coral bar
+ * ============================================================================
+ */
+
+/* ============================================================================
+ * DESIGN NOTES
+ * ============================================================================
+ * Color Strategy:
+ *   - Background: Pure OLED black (#000000)
+ *   - Border: Slate gray (#3e4451) for subtle definition
+ *   - Text/Icons: Neutral gray (#c8c8c8)
+ *   - Progress: Balanced cyan (#4a9d9d) - active state
+ *   - Warning: Amber gold (#c8a660) - high brightness/volume
+ *   - Muted: Warm coral (#b85a5a) - disabled state
+ *
+ * State Mapping:
+ *   - Volume: Cyan (normal) → Amber (high) → Coral (muted)
+ *   - Brightness: Amber (matches sun/warmth)
+ *   - Microphone: Bright cyan (on) / Coral (muted)
+ *
+ * OLED Safety:
+ *   ✓ Pure black background (#000000)
+ *   ✓ No pure whites (max #c8c8c8)
+ *   ✓ Short display duration (auto-hide)
+ *   ✓ Minimal animations (0.15s)
+ *   ✓ Low-luminance progress bars
+ * ============================================================================
+ */

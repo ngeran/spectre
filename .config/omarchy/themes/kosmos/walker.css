@@ -1,0 +1,107 @@
+/* ============================================================================
+ * 🌌 COSMOS - Walker Application Launcher Configuration
+ * ============================================================================
+ * OLED-optimized launcher with dark cosmic accents
+ * Pure black + high contrast selection
+ * ============================================================================
+ */
+
+@define-color selected-text #2d6060;      /* Very dark cyan (28%) */
+@define-color text #595959;               /* Dark gray (35%) */
+@define-color base #000000;               /* Pure black */
+@define-color border #303030;             /* Very dark gray (19%) */
+@define-color foreground #595959;
+@define-color background #000000;
+
+@define-color selection-bg #1a2530;       /* Very dark teal-gray (15%) */
+@define-color selection-fg #666666;       /* Medium-dark gray (40%) */
+@define-color accent #2d6060;
+@define-color accent-bright #3d8080;
+@define-color text-dim #404040;
+@define-color hover-bg #0a0a0a;           /* Near-black (4%) */
+
+window {
+    background-color: @background;
+    border: 2px solid @border;
+    border-radius: 8px;
+}
+
+entry {
+    background-color: @base;
+    color: @foreground;
+    border-bottom: 2px solid @border;
+    padding: 12px 16px;
+    caret-color: @accent;
+}
+
+entry:focus {
+    border-bottom-color: @accent;
+}
+
+entry placeholder {
+    color: @text-dim;
+}
+
+list {
+    background-color: @background;
+    padding: 8px 0;
+}
+
+row {
+    background-color: transparent;
+    color: @text;
+    padding: 8px 16px;
+}
+
+row:hover {
+    background-color: @hover-bg;
+}
+
+row:selected,
+row:active {
+    background-color: @selection-bg;
+    color: @selection-fg;
+    border-left: 2px solid @accent;
+}
+
+label.title {
+    color: @foreground;
+    font-weight: bold;
+}
+
+label.subtitle {
+    color: @text-dim;
+    font-size: 11px;
+}
+
+row:selected label.title {
+    color: @accent-bright;
+}
+
+scrollbar slider {
+    background-color: @text-dim;
+    border-radius: 4px;
+    min-width: 6px;
+}
+
+scrollbar slider:hover {
+    background-color: @border;
+}
+
+button {
+    background-color: @hover-bg;
+    color: @text;
+    border: 1px solid @border;
+    border-radius: 4px;
+    padding: 6px 12px;
+}
+
+button:hover {
+    background-color: @selection-bg;
+    border-color: @accent;
+}
+
+.match {
+    color: @accent-bright;
+    font-weight: bold;
+}

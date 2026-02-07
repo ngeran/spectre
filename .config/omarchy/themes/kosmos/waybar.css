@@ -1,0 +1,104 @@
+/* ============================================================================
+ * 🌌 COSMOS - Waybar Status Bar (OLED Ultra-Safe)
+ * ============================================================================
+ * Strategy: Pure Black, 35% Luminance, Nerd Font Integration
+ * ============================================================================
+ */
+
+@define-color foreground #595959;
+@define-color background #000000;
+@define-color background-alt #0a0a0a;
+@define-color border #303030;
+
+@define-color accent #2d6060;
+@define-color accent-bright #3d8080;
+@define-color success #4a5838;
+@define-color warning #6a5838;
+@define-color error #6a3838;
+@define-color info #3d6070;
+
+@define-color text-primary #595959;
+@define-color text-dim #404040;
+
+* {
+    /* Updated Font to Meslo Nerd Font */
+    font-family: "MesloLGS NF", "Meslo Nerd Font", sans-serif;
+    font-size: 13px;
+    min-height: 0;
+    /* Reset margins/borders to fix the "double line" issue */
+    border: none;
+    box-shadow: none;
+}
+
+window#waybar {
+    background-color: @background;
+    color: @foreground;
+    /* Static border at the bottom of the bar */
+    border-bottom: 1px solid @border;
+}
+
+/* ----------------------------------------------------------------------------
+ * WORKSPACES (OLED Safe Line Style)
+ * ----------------------------------------------------------------------------
+ */
+#workspaces button {
+    background-color: transparent;
+    color: @text-dim;
+    padding: 0 8px;
+    margin: 4px 2px;
+    /* Ensure no default borders appear */
+    border: none;
+    border-bottom: 2px solid transparent;
+}
+
+#workspaces button.active {
+    /* Instead of a solid block, we use a subtle bottom line */
+    background-color: transparent;
+    color: @accent-bright;
+    border-bottom: 2px solid @accent;
+    /* Remove any default styling that causes "double lines" */
+    box-shadow: none;
+    text-shadow: none;
+}
+
+#workspaces button:hover {
+    background-color: @background-alt;
+    color: @accent-bright;
+    border-bottom: 2px solid @accent-bright;
+}
+
+/* ----------------------------------------------------------------------------
+ * MODULES
+ * ----------------------------------------------------------------------------
+ */
+#clock, #battery, #cpu, #memory, #temperature, #network, #pulseaudio, #bluetooth, #tray {
+    padding: 0 10px;
+    margin: 4px 2px;
+    background-color: transparent; /* Changed from @background-alt to save more pixels */
+    color: @text-primary;
+}
+
+#clock { color: @accent; font-weight: bold; }
+#battery { color: @success; }
+
+/* Warning states use text colors instead of block backgrounds for OLED safety */
+#battery.warning:not(.charging) { color: @warning; }
+#battery.critical:not(.charging) { color: @error; font-weight: bold; }
+
+#cpu { color: @info; }
+#memory { color: @accent; }
+#temperature { color: @success; }
+#temperature.critical { color: @error; }
+
+#network { color: @accent-bright; }
+#pulseaudio { color: @accent; }
+#pulseaudio.muted { color: @text-dim; }
+
+#tray { margin-right: 8px; }
+
+tooltip {
+    background-color: @background;
+    color: @text-primary;
+    border: 1px solid @border;
+    border-radius: 4px;
+}
