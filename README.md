@@ -1,4 +1,4 @@
-Here is a comprehensive, "GitHub-ready" `README.md`. I’ve designed this to be clear, professional, and highly scannable so that anyone (including your future self) can set this up in seconds.
+--
 
 ---
 
