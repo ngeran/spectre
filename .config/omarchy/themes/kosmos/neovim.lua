@@ -13,7 +13,7 @@ return {
     local Shade = require('nightfox.lib.shade')
 
     -- ------------------------------------------------------------------------
-    -- 1. RAW HEX DEFINITIONS (To prevent Lualine nil errors)
+    -- 1. RAW HEX DEFINITIONS
     -- ------------------------------------------------------------------------
     local cosmos_hex = {
       bg0 = "#000000",
@@ -25,21 +25,23 @@ return {
       green = "#3a4830",
       cyan = "#2d5060",
       magenta = "#4a3858",
-      selection = "#1a2530"
+      selection = "#0a0a0a", -- Visual selection background
+      cursorline = "#121212" -- EXTREMELY dark gray for the active line bar
     }
 
     -- ------------------------------------------------------------------------
-    -- 2. NIGHTFOX PALETTE (Using Shades for syntax)
+    -- 2. NIGHTFOX PALETTE
     -- ------------------------------------------------------------------------
     local cosmos_palette = {
-      bg0 = cosmos_hex.bg0,
-      bg1 = cosmos_hex.bg0,
-      bg2 = cosmos_hex.bg2,
-      fg0 = "#808080",
-      fg1 = cosmos_hex.fg1,
-      fg3 = cosmos_hex.fg3,
-      sel0 = cosmos_hex.selection,
-      sel1 = "#2d6060",
+      bg0     = cosmos_hex.bg0,
+      bg1     = cosmos_hex.bg0,
+      bg2     = cosmos_hex.bg2,
+      bg3     = cosmos_hex.cursorline, -- Nightfox uses bg3 for CursorLine
+      fg0     = "#808080",
+      fg1     = cosmos_hex.fg1,
+      fg3     = cosmos_hex.fg3,
+      sel0    = cosmos_hex.selection,
+      sel1    = "#2d6060",
       comment = cosmos_hex.fg3,
 
       red     = Shade.new(cosmos_hex.red, "#6a3838", "#4a2020"),
@@ -78,6 +80,9 @@ return {
           Normal = { bg = "palette.bg0", fg = "palette.fg1" },
           LineNr = { fg = "palette.bg4" },
           NeoTreeNormal = { bg = "palette.bg0" },
+          Visual = { bg = "palette.sel0" },
+          -- Apply the super dark gray to the CursorLine bar
+          CursorLine = { bg = "palette.bg3" },
         }
       }
     })
@@ -85,7 +90,7 @@ return {
     vim.cmd("colorscheme carbonfox")
 
     -- ------------------------------------------------------------------------
-    -- 3. LUALINE (Using raw hex to fix concatenation error)
+    -- 3. LUALINE
     -- ------------------------------------------------------------------------
     local lualine_theme = {
       normal = {
