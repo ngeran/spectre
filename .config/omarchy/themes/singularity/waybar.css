@@ -1,0 +1,111 @@
+/* ============================================================================
+ * 🌌 KOSMOS v2: SINGULARITY - Waybar Status Bar
+ * ============================================================================
+ * Strategy: Absolute Black, Spectral Silver, and Chromatic Teal Accents
+ * Optimized for MSI 321URX QD-OLED (Low-energy, High Perceived Contrast)
+ * ============================================================================
+ */
+
+/* Singularity Palette Definitions */
+@define-color background     #000000;
+@define-color background-alt #0d1011; /* Dark Matter */
+@define-color border         #101a1d; /* Gravity Blue */
+
+/* Text & Accents */
+@define-color text-primary   #607575; /* Deep Ash Teal */
+@define-color silver         #708282; /* Spectral Silver (OLED White) */
+@define-color cyan           #4a7a7a; /* Ionized Cyan */
+@define-color photon         #33ffff; /* Photon Blue (Active) */
+
+/* States */
+@define-color success        #335240; /* Nebula Green */
+@define-color warning        #7a6a4a; /* Starfire Gold */
+@define-color error          #7a4a4a; /* Solar Flare Red */
+@define-color info           #4a5c7a; /* Comet Blue */
+
+* {
+    font-family: "MesloLGS NF", "Meslo Nerd Font", sans-serif;
+    font-size: 13px;
+    min-height: 0;
+    border: none;
+    box-shadow: none;
+}
+
+window#waybar {
+    background-color: @background;
+    color: @text-primary;
+    /* 1px border is safe for OLED, but keeps the bar separate from windows */
+    border-bottom: 1px solid @border;
+}
+
+/* ----------------------------------------------------------------------------
+ * WORKSPACES (Singularity Line Style)
+ * ----------------------------------------------------------------------------
+ */
+#workspaces button {
+    background-color: transparent;
+    color: @text-primary;
+    padding: 0 8px;
+    margin: 4px 2px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+#workspaces button.active {
+    background-color: transparent;
+    color: @silver; /* Use Spectral Silver for focus */
+    border-bottom: 2px solid @cyan; /* Accent line */
+}
+
+#workspaces button.urgent {
+    color: @error;
+    border-bottom: 2px solid @error;
+}
+
+#workspaces button:hover {
+    background-color: @background-alt;
+    color: @photon;
+    border-bottom: 2px solid @photon;
+}
+
+/* ----------------------------------------------------------------------------
+ * MODULES (Low Luminance / High Precision)
+ * ----------------------------------------------------------------------------
+ */
+#clock, #battery, #cpu, #memory, #temperature, #network, #pulseaudio, #bluetooth, #tray {
+    padding: 0 10px;
+    margin: 4px 0px;
+    background-color: transparent;
+    color: @text-primary;
+}
+
+/* Custom coloring for high-glance visibility */
+#clock { 
+    color: @silver; 
+    font-weight: bold; 
+}
+
+#battery { color: @success; }
+#battery.charging { color: @photon; }
+#battery.warning:not(.charging) { color: @warning; }
+#battery.critical:not(.charging) { color: @error; font-weight: bold; }
+
+#cpu { color: @info; }
+#memory { color: @cyan; }
+#temperature { color: @success; }
+#temperature.critical { color: @error; }
+
+#network { color: @cyan; }
+#network.disconnected { color: @error; }
+
+#pulseaudio { color: @text-primary; }
+#pulseaudio.muted { color: @background-alt; }
+
+#tray { margin-right: 8px; }
+
+tooltip {
+    background-color: @background;
+    color: @silver;
+    border: 1px solid @cyan;
+    border-radius: 0px; /* Rounding = 0 to match your Hyprland theme */
+}

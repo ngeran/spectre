@@ -1,0 +1,68 @@
+# ============================================================================
+# 🌌 COSMOS - btop System Monitor Theme
+# ============================================================================
+# OLED-optimized performance monitoring with cosmic color gradients
+# All colors at 25-40% luminance maximum for OLED safety
+# ============================================================================
+
+# Main colors
+theme[main_bg]=""
+theme[main_fg]="#595959"
+theme[title]="#5a5030"
+theme[hi_fg]="#2d6060"
+theme[selected_bg]="#1a2530"
+theme[selected_fg]="#666666"
+theme[inactive_fg]="#303030"
+theme[proc_misc]="#404040"
+
+# Box outlines (very dark gray)
+theme[cpu_box]="#404040"
+theme[mem_box]="#404040"
+theme[net_box]="#404040"
+theme[proc_box]="#404040"
+theme[div_line]="#404040"
+
+# Temperature gradient: Very dark cyan → dark amber → dark coral
+theme[temp_start]="#3d6070"
+theme[temp_mid]="#5a4830"
+theme[temp_end]="#6a3838"
+
+# CPU gradient: Very dark teal → dark cyan → dark teal bright
+theme[cpu_start]="#2d4848"
+theme[cpu_mid]="#2d6060"
+theme[cpu_end]="#3d8080"
+
+# Memory free gradient: Very dark sage → dark moss → darker forest
+theme[free_start]="#4a5838"
+theme[free_mid]="#3a4830"
+theme[free_end]="#2a3820"
+
+# Memory cached gradient: Dark lavender → very dark purple → darker plum
+theme[cached_start]="#5a4868"
+theme[cached_mid]="#4a3858"
+theme[cached_end]="#3a2848"
+
+# Memory available gradient: Dark teal → dark cyan → dark aqua
+theme[available_start]="#2d4848"
+theme[available_mid]="#3d5858"
+theme[available_end]="#3d8080"
+
+# Memory used gradient: Very dark gold → dark amber → dark coral
+theme[used_start]="#5a5030"
+theme[used_mid]="#6a5838"
+theme[used_end]="#6a3838"
+
+# Download gradient: Very dark moss → dark sage → brighter sage
+theme[download_start]="#3a4830"
+theme[download_mid]="#4a5838"
+theme[download_end]="#5a6848"
+
+# Upload gradient: Very dark cyan → dark aqua → brighter aqua
+theme[upload_start]="#2d5060"
+theme[upload_mid]="#3d6070"
+theme[upload_end]="#4d7080"
+
+# Process gradient: Very dark cyan
+theme[process_start]="#2d6060"
+theme[process_mid]="#3d5858"
+theme[process_end]="#3d8080"

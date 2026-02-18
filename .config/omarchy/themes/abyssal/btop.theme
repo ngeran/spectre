@@ -1,0 +1,64 @@
+
+# ============================================================================
+# btop System Monitor - ABYSSAL BLOOM Theme
+# Optimization: Sea Glass + Phosphor Teal Spectrum
+# Strategy: Pure Black substrate — only living things glow
+# ============================================================================
+
+# CORE COLORS
+theme[main_bg]="#000000"
+theme[main_fg]="#5a7a72"
+theme[title]="#70a098"
+theme[hi_fg]="#00e8c0"
+theme[selected_bg]="#0a1614"
+theme[selected_fg]="#70a098"
+theme[inactive_fg]="#0a0e0d"
+theme[proc_misc]="#3a70c0"
+
+# BOX OUTLINES
+theme[cpu_box]="#0a1614"
+theme[mem_box]="#0a1614"
+theme[net_box]="#0a1614"
+theme[proc_box]="#0a1614"
+theme[div_line]="#0a1614"
+
+# TEMPERATURE GRAPH (Teal -> Amber -> Coral)
+theme[temp_start]="#0e3a34"
+theme[temp_mid]="#c08830"
+theme[temp_end]="#c0404a"
+
+# CPU USAGE GRAPH (Abyss -> Phosphor Bloom)
+theme[cpu_start]="#0a1614"
+theme[cpu_mid]="#2a6a60"
+theme[cpu_end]="#00e8c0"
+
+# MEMORY METERS
+theme[free_start]="#1a4a38"
+theme[free_mid]="#00b890"
+theme[free_end]="#5a7a72"
+
+theme[cached_start]="#32184a"
+theme[cached_mid]="#8040c0"
+theme[cached_end]="#70a098"
+
+theme[available_start]="#0e3a34"
+theme[available_mid]="#2a6a60"
+theme[available_end]="#70a098"
+
+theme[used_start]="#3a3018"
+theme[used_mid]="#c08830"
+theme[used_end]="#c0404a"
+
+# NETWORK GRAPHS
+theme[download_start]="#0e3a34"
+theme[download_mid]="#2a6a60"
+theme[download_end]="#70a098"
+
+theme[upload_start]="#1a2a4a"
+theme[upload_mid]="#3a70c0"
+theme[upload_end]="#70a098"
+
+# PROCESS GRAPH
+theme[process_start]="#0e3a34"
+theme[process_mid]="#2a6a60"
+theme[process_end]="#00e8c0"

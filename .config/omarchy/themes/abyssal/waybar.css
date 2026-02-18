@@ -1,0 +1,110 @@
+/* ============================================================================
+ * 🌊 ABYSSAL BLOOM - Waybar Status Bar
+ * ============================================================================
+ * Strategy: Void Black substrate, phosphor teal accents, ember warmth
+ * Optimized for MSI 321URX QD-OLED (Low-energy, High Perceived Contrast)
+ * ============================================================================
+ */
+
+/* Abyssal Bloom Palette Definitions */
+@define-color background     #000000;
+@define-color background-alt #0a0e0d; /* Void Black — color0 */
+@define-color border         #0a1614; /* Trench Shadow — selection_bg */
+
+/* Text & Accents */
+@define-color text-primary   #5a7a72; /* Abyssal Mist — foreground */
+@define-color sea-glass      #70a098; /* Sea Glass — color15 (OLED White) */
+@define-color teal           #2a6a60; /* Phosphor Shadow — accent */
+@define-color phosphor       #00e8c0; /* Phosphor Bloom — accent_bright (Active) */
+
+/* States — mapped to bright spectrum */
+@define-color success        #00b890; /* Phosphor Bloom — color10 */
+@define-color warning        #c08830; /* Bioluminescent Amber — color11 */
+@define-color error          #c0404a; /* Coral Flare — color9 */
+@define-color info           #3a70c0; /* Deep Water Blue — color12 */
+@define-color violet         #8040c0; /* Violet Depth — color13 */
+
+* {
+    font-family: "MesloLGS NF", "Meslo Nerd Font", sans-serif;
+    font-size: 13px;
+    min-height: 0;
+    border: none;
+    box-shadow: none;
+}
+
+window#waybar {
+    background-color: @background;
+    color: @text-primary;
+    border-bottom: 1px solid @border;
+}
+
+/* ----------------------------------------------------------------------------
+ * WORKSPACES (Abyssal Bloom Line Style)
+ * ----------------------------------------------------------------------------
+ */
+#workspaces button {
+    background-color: transparent;
+    color: @text-primary;
+    padding: 0 8px;
+    margin: 4px 2px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+#workspaces button.active {
+    background-color: transparent;
+    color: @sea-glass;          /* Sea Glass for focus */
+    border-bottom: 2px solid @teal;
+}
+
+#workspaces button.urgent {
+    color: @error;
+    border-bottom: 2px solid @error;
+}
+
+#workspaces button:hover {
+    background-color: @background-alt;
+    color: @phosphor;
+    border-bottom: 2px solid @phosphor;
+}
+
+/* ----------------------------------------------------------------------------
+ * MODULES
+ * ----------------------------------------------------------------------------
+ */
+#clock, #battery, #cpu, #memory, #temperature, #network, #pulseaudio, #bluetooth, #tray {
+    padding: 0 10px;
+    margin: 4px 0px;
+    background-color: transparent;
+    color: @text-primary;
+}
+
+#clock {
+    color: @sea-glass;
+    font-weight: bold;
+}
+
+#battery                       { color: @success; }
+#battery.charging              { color: @phosphor; }
+#battery.warning:not(.charging){ color: @warning; }
+#battery.critical:not(.charging){ color: @error; font-weight: bold; }
+
+#cpu                           { color: @info; }
+#memory                        { color: @violet; }   /* Violet Depth — the one surprise pop */
+#temperature                   { color: @success; }
+#temperature.critical          { color: @error; }
+
+#network                       { color: @teal; }
+#network.disconnected          { color: @error; }
+
+#pulseaudio                    { color: @text-primary; }
+#pulseaudio.muted              { color: @background-alt; }
+
+#tray { margin-right: 8px; }
+
+tooltip {
+    background-color: @background;
+    color: @sea-glass;
+    border: 1px solid @teal;
+    border-radius: 0px;
+}

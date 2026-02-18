@@ -1,0 +1,105 @@
+/* ============================================================================
+ * 🌌 KOSMOS v2: SINGULARITY - Walker Application Launcher
+ * ============================================================================
+ * Strategy: Absolute Black + Spectral Silver + Photon Blue Accents
+ * Optimized for MSI 321URX (Zero Glow, High Perceived Contrast)
+ * ============================================================================
+ */
+
+/* Singularity Palette */
+@define-color base           #000000; /* Pure Void */
+@define-color text           #607575; /* Deep Ash Teal */
+@define-color silver         #708282; /* Spectral Silver (OLED White) */
+@define-color border         #101a1d; /* Gravity Blue */
+@define-color accent         #4a7a7a; /* Ionized Cyan */
+@define-color photon         #33ffff; /* Photon Blue */
+@define-color selection-bg   #0d1112; /* Faint Nebula Void */
+@define-color text-dim       #3a4a4a; /* Dim Gas */
+
+window {
+    background-color: @base;
+    /* 1px border matches your Hyprland border_size */
+    border: 1px solid @border;
+    border-radius: 0px; 
+}
+
+entry {
+    background-color: @base;
+    color: @silver;
+    border-bottom: 1px solid @border;
+    padding: 12px 16px;
+    caret-color: @photon;
+}
+
+entry:focus {
+    border-bottom-color: @accent;
+}
+
+entry placeholder {
+    color: @text-dim;
+}
+
+list {
+    background-color: @base;
+    padding: 8px 0;
+}
+
+row {
+    background-color: transparent;
+    color: @text;
+    padding: 8px 16px;
+    transition: all 0.2s ease;
+}
+
+row:hover {
+    background-color: @selection-bg;
+    color: @silver;
+}
+
+row:selected,
+row:active {
+    background-color: @selection-bg;
+    color: @silver;
+    /* Left border accent for high-glance visibility */
+    border-left: 2px solid @photon;
+}
+
+label.title {
+    color: @silver;
+    font-weight: bold;
+}
+
+label.subtitle {
+    color: @text-dim;
+    font-size: 11px;
+}
+
+/* Match highlight (when searching) */
+.match {
+    color: @photon;
+    font-weight: bold;
+}
+
+row:selected label.title {
+    color: @photon;
+}
+
+scrollbar slider {
+    background-color: @border;
+    border-radius: 0px;
+    min-width: 4px;
+}
+
+button {
+    background-color: @base;
+    color: @text;
+    border: 1px solid @border;
+    border-radius: 0px;
+    padding: 6px 12px;
+}
+
+button:hover {
+    background-color: @selection-bg;
+    border-color: @accent;
+    color: @photon;
+}
