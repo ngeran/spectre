@@ -19,3 +19,6 @@ alias spectre='/usr/bin/git --git-dir=/home/nikos/.spectre_repo/ --work-tree=/ho
 
 # tty-clock 
 alias clock='tty-clock -c -C 4 -b -s'
+
+# opencode
+export PATH=/home/nikos/.opencode/bin:$PATH
