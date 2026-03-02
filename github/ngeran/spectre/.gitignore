@@ -1,0 +1,34 @@
+# Global Ignore for Spectre
+# -------------------------
+
+# Folders with sensitive credentials
+.ssh/*
+.gnupg/*
+.aws/*
+.docker/config.json
+.netrc
+
+# Browser data (huge and contains session cookies/passwords)
+.mozilla/
+.config/google-chrome/
+.config/chromium/
+
+# Local cache and temporary files
+.cache/
+.local/share/Trash/
+.npm/
+.cargo/
+.gradle/
+.pyenv/
+*.log
+*.tmp
+
+# History files (can contain typed passwords)
+.bash_history
+.zsh_history
+.python_history
+.node_repl_history
+
+# Application specific secrets
+.config/gh/hosts.yml
+.config/keybase/
